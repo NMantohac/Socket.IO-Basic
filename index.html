@@ -1,0 +1,23 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+
+<script>
+  const socket = io('http://localhost:9000');
+  // let ws = new WebSocket('ws://localhost:9000');
+  console.log(socket);
+  
+  // ws.onopen = (event) => {
+  //   ws.send('I am so excited that I am connected!');
+  // };
+
+  // ws.onmessage = (event) => {
+  //   console.log(event);
+  // };
+
+  socket.on('connect', (data) => {
+    socket.on('welcome', (message) => {
+      console.log(message);
+    });
+    socket.emit('message', { data: 'I am so excited that I am connected!' });
+  });
+
+</script>
